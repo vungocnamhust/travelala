@@ -1,0 +1,34 @@
+{
+  "name": "book-tour-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "init": "node controllers/address.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "camelcase-keys": "^6.2.2",
+    "cors": "^2.8.5",
+    "datauri": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.10.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.1",
+    "mongoose-sequence": "^5.3.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "path": "^0.12.7",
+    "snakecase-keys": "^3.2.1",
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  }
+}

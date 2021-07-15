@@ -1,0 +1,3353 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Book tour open API",
+    "description": "This is a sample server Book tour server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://travelala.southeastasia.cloudapp.azure.com:8000/api/v1"
+    },
+    {
+      "url": "http://13.76.131.255:8000/api/v1"
+    },
+    {
+      "url": "http://localhost:8000/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "user",
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "/user"
+      }
+    },
+    {
+      "name": "tour"
+    },
+    {
+      "name": "trip"
+    },
+    {
+      "name": "order"
+    },
+    {
+      "name": "address"
+    }
+  ],
+  "paths": {
+    "/addresses": {
+      "get": {
+        "tags": [
+          "address"
+        ],
+        "summary": "get all province, district of startPoint, endPoint",
+        "description": "Get all the trips of all tours",
+        "operationId": "getallprovince,districtofstartPoint,endPoint",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "128078"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"1f44e-1/J1pE5804woLJ7TjqA5mjq5+Go\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 21 May 2021 15:56:02 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Address"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/tours": {
+      "post": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "insert tours",
+        "operationId": "inserttours",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              },
+              "example": {
+                "tours": [
+                  {
+                    "name": "Food tour Ha Nam 1",
+                    "desc": "1 noi tuyet voi",
+                    "startAddress": {
+                      "province": "Hà Nội",
+                      "district": "TP Hà Nội",
+                      "type": "place"
+                    },
+                    "endAddress": {
+                      "province": "Ha Nam",
+                      "district": "An Dương",
+                      "type": "place"
+                    },
+                    "points": [
+                      {
+                        "province": "Hải Phòng",
+                        "district": "An Dương",
+                        "type": "place",
+                        "name": "Hon Thom Nature Park 4",
+                        "street": "Nguyen Trai"
+                      },
+                      {
+                        "province": "Hải Phòng",
+                        "district": "An Dương",
+                        "type": "place",
+                        "name": "Hon Thom Nature Park 5",
+                        "street": "Nguyen Trai"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Food tour Ha Nam 2",
+                    "desc": "1 noi tuyet voi",
+                    "startAddress": {
+                      "province": "Hà Nội",
+                      "district": "TP Hà Nội",
+                      "type": "place"
+                    },
+                    "endAddress": {
+                      "province": "Ha Nam",
+                      "district": "An Dương",
+                      "type": "place"
+                    },
+                    "points": [
+                      {
+                        "province": "Ha Nam",
+                        "district": "An Dương",
+                        "type": "place",
+                        "name": "Hon Thom Nature Park 1",
+                        "street": "Nguyen Trai"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "get tours",
+        "operationId": "gettours",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tour"
+                },
+                "example": {
+                  "status": 200,
+                  "tour": [
+                    {
+                      "_id": 1,
+                      "name": "Food tour Hai Phong",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T16:54:46.173Z",
+                          "updatedAt": "2021-04-25T16:54:46.173Z",
+                          "_id": 1
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 2",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T16:54:46.173Z",
+                          "updatedAt": "2021-04-25T16:54:46.173Z",
+                          "_id": 2
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 3",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T16:54:46.174Z",
+                          "updatedAt": "2021-04-25T16:54:46.174Z",
+                          "_id": 3
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T16:54:46.174Z",
+                          "updatedAt": "2021-04-25T16:54:46.174Z",
+                          "_id": 4
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T16:54:46.174Z",
+                          "updatedAt": "2021-04-25T16:54:46.174Z",
+                          "_id": 5
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Hải Phòng', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-04-25T16:54:49.199Z",
+                      "updatedAt": "2021-04-25T16:54:49.199Z"
+                    },
+                    {
+                      "_id": 3,
+                      "name": "Food tour Hai Phong",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T17:05:27.685Z",
+                          "updatedAt": "2021-04-25T17:05:27.685Z",
+                          "_id": 11
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 2",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T17:05:27.687Z",
+                          "updatedAt": "2021-04-25T17:05:27.687Z",
+                          "_id": 12
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 3",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T17:05:27.687Z",
+                          "updatedAt": "2021-04-25T17:05:27.687Z",
+                          "_id": 13
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T17:05:27.687Z",
+                          "updatedAt": "2021-04-25T17:05:27.687Z",
+                          "_id": 15
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-04-25T17:05:27.687Z",
+                          "updatedAt": "2021-04-25T17:05:27.687Z",
+                          "_id": 14
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Hải Phòng', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-04-25T17:05:29.851Z",
+                      "updatedAt": "2021-04-25T17:05:29.851Z"
+                    },
+                    {
+                      "_id": 4,
+                      "name": "Food tour Ha Nam",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:07:04.150Z",
+                          "updatedAt": "2021-05-04T10:07:04.150Z",
+                          "_id": 16
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 2",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:07:04.151Z",
+                          "updatedAt": "2021-05-04T10:07:04.151Z",
+                          "_id": 17
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 3",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:07:04.151Z",
+                          "updatedAt": "2021-05-04T10:07:04.151Z",
+                          "_id": 18
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:07:04.151Z",
+                          "updatedAt": "2021-05-04T10:07:04.151Z",
+                          "_id": 19
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:07:04.151Z",
+                          "updatedAt": "2021-05-04T10:07:04.151Z",
+                          "_id": 20
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:07:06.131Z",
+                      "updatedAt": "2021-05-04T10:07:06.131Z"
+                    },
+                    {
+                      "_id": 5,
+                      "name": "Food tour Ha Nam 1",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:22:00.694Z",
+                          "updatedAt": "2021-05-04T10:22:00.694Z",
+                          "_id": 21
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:22:00.695Z",
+                          "updatedAt": "2021-05-04T10:22:00.695Z",
+                          "_id": 22
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:22:01.947Z",
+                      "updatedAt": "2021-05-04T10:22:01.947Z"
+                    },
+                    {
+                      "_id": 6,
+                      "name": "Food tour Ha Nam 2",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Ha Nam",
+                          "createdAt": "2021-05-04T10:22:00.696Z",
+                          "updatedAt": "2021-05-04T10:22:00.696Z",
+                          "_id": 23
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:22:02.107Z",
+                      "updatedAt": "2021-05-04T10:22:02.107Z"
+                    },
+                    {
+                      "_id": 8,
+                      "name": "Food tour Ha Nam 1",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:28:05.283Z",
+                          "updatedAt": "2021-05-04T10:28:05.283Z",
+                          "_id": 26
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:28:05.284Z",
+                          "updatedAt": "2021-05-04T10:28:05.284Z",
+                          "_id": 25
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:28:05.770Z",
+                      "updatedAt": "2021-05-04T10:28:05.770Z"
+                    },
+                    {
+                      "_id": 7,
+                      "name": "Food tour Ha Nam 2",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Ha Nam",
+                          "createdAt": "2021-05-04T10:28:05.284Z",
+                          "updatedAt": "2021-05-04T10:28:05.284Z",
+                          "_id": 24
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:28:05.755Z",
+                      "updatedAt": "2021-05-04T10:28:05.755Z"
+                    },
+                    {
+                      "_id": 9,
+                      "name": "Food tour Ha Nam 1",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:29:39.332Z",
+                          "updatedAt": "2021-05-04T10:29:39.332Z",
+                          "_id": 27
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:29:39.333Z",
+                          "updatedAt": "2021-05-04T10:29:39.333Z",
+                          "_id": 28
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:29:40.616Z",
+                      "updatedAt": "2021-05-04T10:29:40.616Z"
+                    },
+                    {
+                      "_id": 10,
+                      "name": "Food tour Ha Nam 2",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Ha Nam",
+                          "createdAt": "2021-05-04T10:29:39.333Z",
+                          "updatedAt": "2021-05-04T10:29:39.333Z",
+                          "_id": 29
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:29:40.767Z",
+                      "updatedAt": "2021-05-04T10:29:40.767Z"
+                    },
+                    {
+                      "_id": 11,
+                      "name": "Food tour Ha Nam 1",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:33:02.363Z",
+                          "updatedAt": "2021-05-04T10:33:02.363Z",
+                          "_id": 30
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:33:02.364Z",
+                          "updatedAt": "2021-05-04T10:33:02.364Z",
+                          "_id": 31
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:33:03.550Z",
+                      "updatedAt": "2021-05-04T10:33:03.550Z"
+                    },
+                    {
+                      "_id": 12,
+                      "name": "Food tour Ha Nam 2",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Ha Nam",
+                          "createdAt": "2021-05-04T10:33:02.364Z",
+                          "updatedAt": "2021-05-04T10:33:02.364Z",
+                          "_id": 32
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:33:03.783Z",
+                      "updatedAt": "2021-05-04T10:33:03.783Z"
+                    },
+                    {
+                      "_id": 13,
+                      "name": "Food tour Ha Nam 1",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:35:19.785Z",
+                          "updatedAt": "2021-05-04T10:35:19.785Z",
+                          "_id": 33
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:35:19.785Z",
+                          "updatedAt": "2021-05-04T10:35:19.785Z",
+                          "_id": 34
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:35:21.123Z",
+                      "updatedAt": "2021-05-04T10:35:21.123Z"
+                    },
+                    {
+                      "_id": 14,
+                      "name": "Food tour Ha Nam 2",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Ha Nam",
+                          "createdAt": "2021-05-04T10:35:19.785Z",
+                          "updatedAt": "2021-05-04T10:35:19.785Z",
+                          "_id": 35
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:35:21.302Z",
+                      "updatedAt": "2021-05-04T10:35:21.302Z"
+                    },
+                    {
+                      "_id": 15,
+                      "name": "Food tour Ha Nam 1",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 4",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:39:28.563Z",
+                          "updatedAt": "2021-05-04T10:39:28.563Z",
+                          "_id": 36
+                        },
+                        {
+                          "name": "Hon Thom Nature Park 5",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Hải Phòng",
+                          "createdAt": "2021-05-04T10:39:28.564Z",
+                          "updatedAt": "2021-05-04T10:39:28.564Z",
+                          "_id": 37
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:39:29.849Z",
+                      "updatedAt": "2021-05-04T10:39:29.849Z"
+                    },
+                    {
+                      "_id": 16,
+                      "name": "Food tour Ha Nam 2",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 1",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "An Dương",
+                          "province": "Ha Nam",
+                          "createdAt": "2021-05-04T10:39:28.565Z",
+                          "updatedAt": "2021-05-04T10:39:28.565Z",
+                          "_id": 38
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Ha Nam', district: 'An Dương', type: 'place' }",
+                      "createdAt": "2021-05-04T10:39:30.020Z",
+                      "updatedAt": "2021-05-04T10:39:30.020Z"
+                    },
+                    {
+                      "_id": 17,
+                      "name": "Food tour Nam Dinhhh",
+                      "desc": "1 noi tuyet voi",
+                      "points": [
+                        {
+                          "name": "Hon Thom Nature Park 2",
+                          "type": "place",
+                          "street": "Nguyen Trai",
+                          "district": "Xuân Trường",
+                          "province": "Nam Định ",
+                          "createdAt": "2021-05-04T15:40:04.444Z",
+                          "updatedAt": "2021-05-04T15:40:04.444Z",
+                          "_id": 44
+                        }
+                      ],
+                      "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                      "endAddress": "{ province: 'Nam Định ', district: 'Xuân Trường', type: 'place' }",
+                      "createdAt": "2021-05-04T11:45:29.276Z",
+                      "updatedAt": "2021-05-04T15:40:05.944Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/tours/{id}": {
+      "put": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "update tour",
+        "operationId": "updatetour",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              },
+              "example": {
+                "name": "Food tour Nam Dinhhh",
+                "desc": "1 noi tuyet voi",
+                "startAddress": {
+                  "province": "Hà Nội",
+                  "district": "TP Hà Nội",
+                  "type": "place"
+                },
+                "endAddress": {
+                  "province": "Nam Định ",
+                  "district": "Xuân Trường",
+                  "type": "place"
+                },
+                "points": [
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 1",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 2",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 3",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 4",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 5",
+                    "street": "Nguyen Trai"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "get tour",
+        "operationId": "gettour",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tour"
+                },
+                "example": {
+                  "status": 200,
+                  "tour": {
+                    "_id": 2,
+                    "name": "Food tour Hai Phong",
+                    "desc": "1 noi tuyet voi",
+                    "points": [
+                      {
+                        "name": "Hon Thom Nature Park 1",
+                        "type": "place",
+                        "street": "Nguyen Trai",
+                        "district": "An Dương",
+                        "province": "Hải Phòng",
+                        "createdAt": "2021-04-25T17:05:27.685Z",
+                        "updatedAt": "2021-04-25T17:05:27.685Z",
+                        "_id": 11
+                      },
+                      {
+                        "name": "Hon Thom Nature Park 2",
+                        "type": "place",
+                        "street": "Nguyen Trai",
+                        "district": "An Dương",
+                        "province": "Hải Phòng",
+                        "createdAt": "2021-04-25T17:05:27.687Z",
+                        "updatedAt": "2021-04-25T17:05:27.687Z",
+                        "_id": 12
+                      }
+                    ],
+                    "startAddress": "{ province: 'Hà Nội', district: 'TP Hà Nội', type: 'place' }",
+                    "endAddress": "{ province: 'Hải Phòng', district: 'An Dương', type: 'place' }",
+                    "createdAt": "2021-04-25T17:05:29.851Z",
+                    "updatedAt": "2021-04-25T17:05:29.851Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "delete tour",
+        "operationId": "deletetour",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/tour": {
+      "post": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "insert tour",
+        "operationId": "inserttour",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              },
+              "example": {
+                "name": "Food tour Nam DInh",
+                "desc": "1 noi tuyet voi",
+                "startAddress": {
+                  "province": "Hà Nội",
+                  "district": "TP Hà Nội",
+                  "type": "place"
+                },
+                "endAddress": {
+                  "province": "Nam Định ",
+                  "district": "Xuân Trường",
+                  "type": "place"
+                },
+                "points": [
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 1",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 2",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 3",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 4",
+                    "street": "Nguyen Trai"
+                  },
+                  {
+                    "province": "Nam Định ",
+                    "district": "Xuân Trường",
+                    "type": "place",
+                    "name": "Hon Thom Nature Park 5",
+                    "street": "Nguyen Trai"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Create a new user",
+        "requestBody": {
+          "description": "Create a new user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name = first name + last name"
+                  },
+                  "userName": {
+                    "type": "string",
+                    "example": "namvu"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "035938752613"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 1,
+                  "result": {}
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "User existed",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 405,
+                  "message": "User is existed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "requestBody": {
+          "description": "Login",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 1,
+                  "result": {}
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "User existed",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 406,
+                  "message": "User is not existed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admin/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "login admin account",
+        "operationId": "loginadmin",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "userName": "namjr1",
+                "password": "123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/auth/admin/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "register admin account",
+        "operationId": "registeradmin",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "name": "Nam",
+                "userName": "namjr1",
+                "password": "123",
+                "phone": "0123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/user": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "requestBody": {
+          "description": "Get user information",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 200,
+                  "result": {
+                    "_id": 19,
+                    "name": "Nam",
+                    "userName": "namvudeptraivx",
+                    "password": "123",
+                    "phone": "035938721231",
+                    "role": "user",
+                    "createdAt": "2021-04-25T10:26:31.032Z",
+                    "updatedAt": "2021-04-25T10:26:31.032Z"
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "User existed",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 406,
+                  "message": "User is not existed"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update user",
+        "operationId": "updateuser",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "avatar": "namjr1",
+                "password": "123",
+                "fullName": "123",
+                "firstName": "123",
+                "phone": "123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/trips": {
+      "get": {
+        "tags": [
+          "trip"
+        ],
+        "summary": "get all trips",
+        "description": "Get all the trips of all tours",
+        "operationId": "getalltrips",
+        "parameters": [
+          {
+            "name": "endPoint",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Nam Định"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "4115"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"1013-YeVL2KiVLpDv2OO0yKzYH3TUc40\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 09 May 2021 11:45:39 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trip"
+                },
+                "example": {
+                  "status": 200,
+                  "trips": [
+                    {
+                      "_id": 1,
+                      "desc": "abc chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaNHX84JyDacx1syKCIOGsWdsqfbe65t4yYMlVTVxlRqPjxRg5flkzCYQjvVwvK3a",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:23:50.928Z",
+                      "updatedAt": "2021-05-09T11:16:19.983Z"
+                    },
+                    {
+                      "_id": 2,
+                      "desc": "abc chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaNRup3rSqbBpmsVDw6EjKn4nugMsd7Z0Y0JqohM9r5RURHHdYm28TmrW1bUQV0hi",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:25:15.288Z",
+                      "updatedAt": "2021-05-09T11:25:40.077Z"
+                    },
+                    {
+                      "_id": 3,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaNhXpTLxUqd9JKbVtmw5D5nhFWFlu10cnsLyVdca3kZAx7jHCbi0fY4u5o8rC26g",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:26:11.365Z",
+                      "updatedAt": "2021-05-09T10:26:11.365Z"
+                    },
+                    {
+                      "_id": 4,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaND7KFE5eS9aRvk2LebyBbj7qbSJxZAt3nIbvVU0P1Ir2zeOF0cMynBjGitN0Xbf",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:30:01.149Z",
+                      "updatedAt": "2021-05-09T10:30:01.149Z"
+                    },
+                    {
+                      "_id": 5,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaNeerOOlX4kfLDUW4fgaAOzzZjVCUOBbctNnyYM5yGlFfLcrwyLjmhNaGhPtosSv",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:31:01.395Z",
+                      "updatedAt": "2021-05-09T10:31:01.395Z"
+                    },
+                    {
+                      "_id": 6,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaNm7F9WRsYlSkWIXYuR6UBKO73yHf0nisbGVgRsapGBC3sTqwWz8XCu6QZ2KcIS7",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:31:49.998Z",
+                      "updatedAt": "2021-05-09T10:31:49.998Z"
+                    },
+                    {
+                      "_id": 7,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaNZhGIKYrM82p9EPRaMdx6CougqxQ5cdnC7Y3KJ1OBEh8HMKiX8c0M176e3EcQ1N",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:33:55.044Z",
+                      "updatedAt": "2021-05-09T10:33:55.044Z"
+                    },
+                    {
+                      "_id": 8,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1NaNNaNsw6p9Pjbd5aYQ3TU1H6NjwFv8KDrLevt7DnMcKwhZKoJPP2nmODQwSYFmONFLU",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:39:14.634Z",
+                      "updatedAt": "2021-05-09T10:39:14.634Z"
+                    },
+                    {
+                      "_id": 9,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "1162122760000016212276000009cE7xtVgsiGYbrXUmyBVThaExKhaPtJMqUTtjPziJu5QY8nkdrmRL5HlnTEmkW",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:39:37.663Z",
+                      "updatedAt": "2021-05-09T10:39:37.663Z"
+                    },
+                    {
+                      "_id": 10,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "code": "116212276000001621227600000G6RZhAxjdEEE56eVOY949lsvnay7ow9tXZt2tnYLkWQorc6Ty1dRHP2lWSFAYy",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:44:55.121Z",
+                      "updatedAt": "2021-05-09T10:44:55.121Z"
+                    },
+                    {
+                      "_id": 11,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "createdAt": "2021-05-09T10:46:30.649Z",
+                      "updatedAt": "2021-05-09T10:46:30.649Z"
+                    },
+                    {
+                      "_id": 12,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 150000,
+                      "startAt": "2021-05-20T05:00:00Z",
+                      "endAt": "2021-05-30T05:00:00Z",
+                      "createdAt": "2021-05-09T10:46:30.65Z",
+                      "updatedAt": "2021-05-09T10:46:30.65Z"
+                    },
+                    {
+                      "_id": 13,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "tourId": 1,
+                      "createdAt": "2021-05-09T10:52:24.69Z",
+                      "updatedAt": "2021-05-09T10:52:24.69Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/tours/{tourId}/trips/{tripId}": {
+      "get": {
+        "tags": [
+          "trip"
+        ],
+        "summary": "get a trip of a tour",
+        "description": "Get a trip of a tour",
+        "operationId": "getatripofatour",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          },
+          {
+            "name": "tripId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 30
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "352"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"160-zUFyk76Wp9tDjYIC8ZY+ewxifqY\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 09 May 2021 11:51:22 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trip"
+                },
+                "example": {
+                  "status": 200,
+                  "trip": {
+                    "_id": 3,
+                    "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                    "slots": "20",
+                    "price": 120000,
+                    "startAt": "2021-05-17T05:00:00Z",
+                    "endAt": "2021-05-17T05:00:00Z",
+                    "code": "1NaNNaNhXpTLxUqd9JKbVtmw5D5nhFWFlu10cnsLyVdca3kZAx7jHCbi0fY4u5o8rC26g",
+                    "tourId": 1,
+                    "createdAt": "2021-05-09T10:26:11.365Z",
+                    "updatedAt": "2021-05-09T10:26:11.365Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "trip"
+        ],
+        "summary": "update a trip",
+        "description": "Update a trip of a tour",
+        "operationId": "updateatrip",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "tripId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trip"
+              },
+              "example": {
+                "desc": "abc chuyen di mua thu tu Ha Noi den Hai Phong",
+                "slots": "20",
+                "price": 120000,
+                "startAt": "2021-05-17T05:00:00Z",
+                "endAt": "2021-05-17T05:00:00Z"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "354"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"162-mRjo9xtssj0LKUYXB3suERin7yo\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 09 May 2021 11:25:40 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trip"
+                },
+                "example": {
+                  "status": 200,
+                  "trip": {
+                    "_id": 2,
+                    "desc": "abc chuyen di mua thu tu Ha Noi den Hai Phong",
+                    "slots": "20",
+                    "price": 120000,
+                    "startAt": "2021-05-17T05:00:00Z",
+                    "endAt": "2021-05-17T05:00:00Z",
+                    "code": "1NaNNaNRup3rSqbBpmsVDw6EjKn4nugMsd7Z0Y0JqohM9r5RURHHdYm28TmrW1bUQV0hi",
+                    "tourId": 1,
+                    "createdAt": "2021-05-09T10:25:15.288Z",
+                    "updatedAt": "2021-05-09T11:25:40.077Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "trip"
+        ],
+        "summary": "delete a trip",
+        "operationId": "deleteatrip",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tripId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "14"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"e-QlsUp1vTYvBgYHrHCBYe2n/q268\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 09 May 2021 10:58:25 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trip"
+                },
+                "example": {
+                  "status": 200
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/tours/{tourId}/trips": {
+      "get": {
+        "tags": [
+          "trip"
+        ],
+        "summary": "get all trips of a tour",
+        "operationId": "getalltripsofatour",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "529"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"211-AlT1YFQ5DHWwjSVKl+T3frrsjrI\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 09 May 2021 11:53:08 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trip"
+                },
+                "example": {
+                  "status": 200,
+                  "trips": [
+                    {
+                      "_id": 15,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "tourId": 2,
+                      "createdAt": "2021-05-09T11:52:57.596Z",
+                      "updatedAt": "2021-05-09T11:52:57.596Z"
+                    },
+                    {
+                      "_id": 16,
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 150000,
+                      "startAt": "2021-05-20T05:00:00Z",
+                      "endAt": "2021-05-30T05:00:00Z",
+                      "tourId": 2,
+                      "createdAt": "2021-05-09T11:52:57.597Z",
+                      "updatedAt": "2021-05-09T11:52:57.597Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "trip"
+        ],
+        "summary": "create many new trips of a tour",
+        "operationId": "createmanynewtripsofatour",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 25
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trip"
+              },
+              "example": {
+                "trips": [
+                  {
+                    "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                    "slots": "20",
+                    "price": 120000,
+                    "startAt": "2021-05-18T05:00:00Z",
+                    "endAt": "2021-05-19T05:00:00Z"
+                  },
+                  {
+                    "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                    "slots": "20",
+                    "price": 150000,
+                    "startAt": "2021-05-20T05:00:00Z",
+                    "endAt": "2021-05-30T05:00:00Z"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "530"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"212-dWEZIKYTVkRSPIFIcoO21I9ToHY\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 09 May 2021 11:52:58 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trip"
+                },
+                "example": {
+                  "status": 200,
+                  "trips": [
+                    {
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 120000,
+                      "startAt": "2021-05-17T05:00:00Z",
+                      "endAt": "2021-05-17T05:00:00Z",
+                      "tourId": 2,
+                      "createdAt": "2021-05-09T11:52:57.596Z",
+                      "updatedAt": "2021-05-09T11:52:57.596Z",
+                      "_id": 15
+                    },
+                    {
+                      "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                      "slots": "20",
+                      "price": 150000,
+                      "startAt": "2021-05-20T05:00:00Z",
+                      "endAt": "2021-05-30T05:00:00Z",
+                      "tourId": 2,
+                      "createdAt": "2021-05-09T11:52:57.597Z",
+                      "updatedAt": "2021-05-09T11:52:57.597Z",
+                      "_id": 16
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/tours/{tourId}/trip": {
+      "post": {
+        "tags": [
+          "trip"
+        ],
+        "summary": "create a new trip of a tour",
+        "operationId": "createanewtripofatour",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 25
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trip"
+              },
+              "example": {
+                "desc": "1 chuyen di mua ha",
+                "slots": "23",
+                "price": 15000,
+                "startAt": "2021-05-20T05:00:00Z",
+                "endAt": "2021-05-15T05:00:00Z"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "373"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"175-0KGwKpUTtFKfpM4x0equgPqiFFk\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 09 May 2021 10:44:55 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trip"
+                },
+                "example": {
+                  "status": 200,
+                  "trip": {
+                    "desc": "1 chuyen di mua thu tu Ha Noi den Hai Phong",
+                    "slots": "20",
+                    "price": 120000,
+                    "startAt": "2021-05-17T05:00:00Z",
+                    "endAt": "2021-05-17T05:00:00Z",
+                    "code": "116212276000001621227600000G6RZhAxjdEEE56eVOY949lsvnay7ow9tXZt2tnYLkWQorc6Ty1dRHP2lWSFAYy",
+                    "tourId": 1,
+                    "createdAt": "2021-05-09T10:44:55.121Z",
+                    "updatedAt": "2021-05-09T10:44:55.121Z",
+                    "_id": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/tours/{tourId}/trips/{tripId}/order": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "create new order",
+        "description": "Get all the trips of all tours",
+        "operationId": "createneworder",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 25
+            }
+          },
+          {
+            "name": "tripId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 33
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              },
+              "example": {
+                "orderNote": "Xin túi nôn khi di chuyển",
+                "totalSlots": 2,
+                "totalPrice": 170000,
+                "paymentMode": "cash",
+                "orderAt": "2021-05-15T03:48:03.503Z"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "343"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"157-G0Oeti3ruPVgvsL3B4A2wekRQ/s\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Thu, 20 May 2021 14:27:32 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "example": {
+                  "status": 200,
+                  "order": {
+                    "orderNote": "Xin túi nôn khi di chuyển",
+                    "totalSlots": 2,
+                    "totalPrice": 170000,
+                    "paymentMode": "bank",
+                    "orderAt": "2021-05-15T03:48:03.503Z",
+                    "paymentDueDate": "2021-05-18T03:48:03.503Z",
+                    "orderCode": "251621520850327ICHCJEDGCE",
+                    "userId": 26,
+                    "createdAt": "2021-05-20T14:27:30.346Z",
+                    "updatedAt": "2021-05-20T14:27:30.346Z",
+                    "_id": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders/{orderId}": {
+      "put": {
+        "tags": [
+          "order"
+        ],
+        "summary": "User pay money for a trip",
+        "description": "Get all the trips of all tours",
+        "operationId": "Userpaymoneyforatrip",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 7
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              },
+              "example": {
+                "status": "paid"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "371"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"173-/Rzv0b4xieczRlnKzQ3AMTAkQwM\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 21 May 2021 15:04:56 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "example": {
+                  "message": {
+                    "id": 7,
+                    "created_at": "2021-05-21T14:44:12.128Z",
+                    "order_at": "2021-05-15T03:48:03.503Z",
+                    "order_code": "251621608252126BEEHIIIFHA",
+                    "order_note": "Xin túi nôn khi di chuyển",
+                    "payment_due_date": "2021-05-18T03:48:03.503Z",
+                    "payment_mode": "cash",
+                    "status": "paid",
+                    "total_price": 170000,
+                    "total_slots": 2,
+                    "updated_at": "2021-05-21T15:04:55.767Z",
+                    "user_id": 26
+                  },
+                  "status": 200
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "get order of user",
+        "description": "Get all the trips of all tours",
+        "operationId": "getorderofuser",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "343"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"157-ph28czZhIbhrUKrOB1+RXyyughg\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Thu, 20 May 2021 14:32:14 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "example": {
+                  "status": 200,
+                  "order": {
+                    "_id": 1,
+                    "orderNote": "Xin túi nôn khi di chuyển",
+                    "totalSlots": 2,
+                    "totalPrice": 170000,
+                    "paymentMode": "bank",
+                    "orderAt": "2021-05-15T03:48:03.503Z",
+                    "paymentDueDate": "2021-05-18T03:48:03.503Z",
+                    "orderCode": "251621268948436CHEEJCAABF",
+                    "userId": 26,
+                    "createdAt": "2021-05-17T16:29:08.472Z",
+                    "updatedAt": "2021-05-17T16:29:08.472Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "order"
+        ],
+        "summary": "admin & user can cancel a trip",
+        "description": "Get all the trips of all tours",
+        "operationId": "admin&usercancancelatrip",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "48"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"30-wDjFTswgicScZMkuWkb/uQ5Tt/U\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 21 May 2021 14:36:27 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "example": {
+                  "status": 200,
+                  "message": "CANCELED_SUCCESSFULLY"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "get all order of user. It can used for admin",
+        "description": "Get all the trips of all tours",
+        "operationId": "getallorderofuser.Itcanusedforadmin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "987"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"3db-xaU+MHqwmIktvXnNqk7WE811uLI\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 21 May 2021 14:19:48 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "example": {
+                  "status": 200,
+                  "order": [
+                    {
+                      "_id": 1,
+                      "orderNote": "Xin túi nôn khi di chuyển",
+                      "totalSlots": 2,
+                      "totalPrice": 170000,
+                      "paymentMode": "bank",
+                      "orderAt": "2021-05-15T03:48:03.503Z",
+                      "paymentDueDate": "2021-05-18T03:48:03.503Z",
+                      "orderCode": "251621268948436CHEEJCAABF",
+                      "userId": 26,
+                      "createdAt": "2021-05-17T16:29:08.472Z",
+                      "updatedAt": "2021-05-17T16:29:08.472Z"
+                    },
+                    {
+                      "_id": 2,
+                      "orderNote": "Xin túi nôn khi di chuyển",
+                      "totalSlots": 2,
+                      "totalPrice": 170000,
+                      "paymentMode": "bank",
+                      "orderAt": "2021-05-15T03:48:03.503Z",
+                      "paymentDueDate": "2021-05-18T03:48:03.503Z",
+                      "orderCode": "251621269221995BCAIBBFGJI",
+                      "userId": 26,
+                      "createdAt": "2021-05-17T16:33:42.009Z",
+                      "updatedAt": "2021-05-17T16:33:42.009Z"
+                    },
+                    {
+                      "_id": 3,
+                      "orderNote": "Xin túi nôn khi di chuyển",
+                      "totalSlots": 2,
+                      "totalPrice": 170000,
+                      "paymentMode": "bank",
+                      "orderAt": "2021-05-15T03:48:03.503Z",
+                      "paymentDueDate": "2021-05-18T03:48:03.503Z",
+                      "orderCode": "251621520850327ICHCJEDGCE",
+                      "userId": 26,
+                      "createdAt": "2021-05-20T14:27:30.346Z",
+                      "updatedAt": "2021-05-20T14:27:30.346Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  
+  },
+  "components": {
+    "schemas": {
+      "Tour": {
+        "title": "Tour",
+        "required": [
+          "name",
+          "desc",
+          "startAddress",
+          "endAddress",
+          "points"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "startAddress": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "endAddress": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "name": "Food tour Ha Nam 1",
+          "desc": "1 noi tuyet voi",
+          "startAddress": {
+            "province": "Hà Nội",
+            "district": "TP Hà Nội",
+            "type": "place"
+          },
+          "endAddress": {
+            "province": "Ha Nam",
+            "district": "An Dương",
+            "type": "place"
+          },
+          "points": [
+            {
+              "province": "Hải Phòng",
+              "district": "An Dương",
+              "type": "place",
+              "name": "Hon Thom Nature Park 4",
+              "street": "Nguyen Trai"
+            },
+            {
+              "province": "Hải Phòng",
+              "district": "An Dương",
+              "type": "place",
+              "name": "Hon Thom Nature Park 5",
+              "street": "Nguyen Trai"
+            }
+          ]
+        }
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "description": "example: Nhà dân tộc"
+          },
+          "type": {
+            "type": "string",
+            "description": "place = Địa danh",
+            "enum": [
+              "province",
+              "district",
+              "place"
+            ]
+          },
+          "number": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "district": {
+            "type": "string"
+          },
+          "province": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Address"
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          }
+        },
+        "xml": {
+          "name": "User"
+        }
+      },
+      "Trip": {
+        "title": "Trip",
+        "required": [
+          "_id",
+          "desc",
+          "slots",
+          "price",
+          "startAt",
+          "endAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "slots": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startAt": {
+            "type": "string"
+          },
+          "endAt": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "tourId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "_id": 1,
+          "desc": "abc chuyen di mua thu tu Ha Noi den Hai Phong",
+          "slots": "20",
+          "price": 120000,
+          "startAt": "2021-05-17T05:00:00Z",
+          "endAt": "2021-05-17T05:00:00Z",
+          "code": "1NaNNaNHX84JyDacx1syKCIOGsWdsqfbe65t4yYMlVTVxlRqPjxRg5flkzCYQjvVwvK3a",
+          "tourId": 1,
+          "createdAt": "2021-05-09T10:23:50.928Z",
+          "updatedAt": "2021-05-09T11:16:19.983Z"
+        }
+      },
+      "Order": {
+        "title": "Order",
+        "required": [
+          "orderNote",
+          "totalSlots",
+          "totalPrice",
+          "paymentMode",
+          "orderAt",
+          "paymentDueDate",
+          "orderCode",
+          "userId",
+          "createdAt",
+          "updatedAt",
+          "_id"
+        ],
+        "type": "object",
+        "properties": {
+          "orderNote": {
+            "type": "string"
+          },
+          "totalSlots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentMode": {
+            "type": "string"
+          },
+          "orderAt": {
+            "type": "string"
+          },
+          "paymentDueDate": {
+            "type": "string"
+          },
+          "orderCode": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "orderNote": "Xin túi nôn khi di chuyển",
+          "totalSlots": 2,
+          "totalPrice": 170000,
+          "paymentMode": "bank",
+          "orderAt": "2021-05-15T03:48:03.503Z",
+          "paymentDueDate": "2021-05-18T03:48:03.503Z",
+          "orderCode": "251621520850327ICHCJEDGCE",
+          "userId": 26,
+          "createdAt": "2021-05-20T14:27:30.346Z",
+          "updatedAt": "2021-05-20T14:27:30.346Z",
+          "_id": 3
+        }
+      }
+    },
+    "securitySchemes": {
+      "httpBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "httpBearer": []
+    }
+  ]
+}

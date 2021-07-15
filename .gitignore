@@ -1,0 +1,10 @@
+/node_modules
+.DS_Store
+.env
+book-tour-db.png
+book-tour-usecase.png
+province.txt
+open-api-example.json
+logs/2021-05-09.log
+logs/.9e14ce654b5cbddf405805cba353dbf8ea4834c3-audit.json
+logs

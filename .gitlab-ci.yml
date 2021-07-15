@@ -1,0 +1,21 @@
+image: alpine:3.13.5
+
+before_script:
+    - apk add --update openssh-client bash
+    - ping -c 3 13.76.131.255
+    - eval $(ssh-agent -s)
+    - bash -c 'ssh-add <(echo "$PROD_SSH_KEY")'
+    - mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - echo -e "$PROD_SSH_KEY" > ~/.ssh/id_rsa
+    - chmod 400 ~/.ssh/id_rsa
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  only: 
+    - master
+  script:
+    - ssh -tt -i ~/.ssh/id_rsa azureuser@13.76.131.255 "cd workspace/backend/nodejs/book-tour-backend && sudo bash ./gitlab-deploy-prod.sh"
