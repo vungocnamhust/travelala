@@ -1,7 +1,67 @@
-# travelala
+# Travelala
 A website for booking travel tours
 
 # Project structure
+├── config
+│   └── auth.js
+├── controllers
+│   ├── address.js
+│   ├── auth.js
+│   ├── order.js
+│   ├── tour.js
+│   ├── trip.js
+│   └── user.js
+├── errors
+│   ├── CustomeError.js
+│   └── errorCodes.js
+├── index.html
+├── index.js
+├── middlewares
+│   ├── async.js
+│   ├── auth.js
+│   ├── authorize.js
+│   ├── camelCaseReq.js
+│   ├── errorHandlers.js
+│   ├── snakeCaseRes.js
+│   └── validate.js
+├── models
+│   ├── address.js
+│   ├── mongoose.js
+│   ├── order.js
+│   ├── timeline.js
+│   ├── tour.js
+│   ├── trip.js
+│   └── user.js
+├── node_modules
+├── routers
+│   ├── address.js
+│   ├── auth.js
+│   ├── index.js
+│   ├── order.js
+│   ├── tour.js
+│   ├── trip.js
+│   └── user.js
+├── services
+│   ├── address.js
+│   ├── auth.js
+│   ├── order.js
+│   ├── tour.js
+│   ├── trip.js
+│   └── user.js
+├── utils
+│   ├── constants.js
+│   ├── logUtil.js
+│   ├── publicRoute.js
+│   └── random.js
+├── uploads
+├── docker-compose.yml
+├── Dockerfile
+├── open-api.json
+├── package-lock.json
+├── package.json
+├── gitlab-deploy-prod.sh
+├── README.md
+└── yarn.lock
 
 # Features
 
